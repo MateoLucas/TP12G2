@@ -18,7 +18,8 @@
 extern "C" {
 #endif
 
-
+    int setup (void);
+    void leds (int, int);
 
 
 #ifdef __cplusplus
