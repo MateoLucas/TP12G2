@@ -10,6 +10,7 @@
  *
  * Created on October 23, 2020, 1:38 PM
  */
+#include"hardware.h"
 #include<stdio.h>
 #include<stdlib.h>
 #include<stdint.h>
@@ -21,8 +22,11 @@
 
 
 int main ()
-{
-	printf("Ingrese una tecla \n");
+{   int error=0;
+    if((error=setup())==1){
+        //salgo
+    }else{
+        printf("Ingrese una tecla \n");
 	int error=0,chr=0,bit=0;
 	do
 	{	
@@ -34,7 +38,9 @@ int main ()
                         {
                             error++;
                         }
-			printf("%d",bit);
+			printf("%d",bit);//esto imprime
+                        leds(i,bit);
+                        
 		}
 		printf("\n");
 		chr = getchar();
@@ -92,6 +98,8 @@ int main ()
 	}
 	while (chr!='q');
 	printf("Programa finalizado\n");
-	return 0;
+    }
+	
+    return 0;
 }
 
