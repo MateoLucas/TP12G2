@@ -35,14 +35,14 @@ int setup(void)
         if((handle_export = fopen(EXPORT_ADRESS ,"w")) == NULL )
         {
             printf("Failed to open EXPORT File.\n");
-            return(1);
+            exit(1);
         }
     
         nWritten = fputs(pins[i],handle_export);//hacer para todos los pins
         if(nWritten==-1)
         {
             printf("Failed to export pin.%d\n", i);
-            return(1);
+            exit(1);
         }else
     {
             printf("Export file opened successfuly.\n");
@@ -56,14 +56,14 @@ int setup(void)
         if((handle_export = fopen(direcction[i] ,"w")) == NULL )
     {
             printf("Failed to open DIRECCTION File.\n");
-            return(1);
+            exit(1);
     }
     
         nWritten = fputs("out",handle_direcction);//hacer para todos los pins
         if(nWritten==-1)
         {
             printf("Failed to direct pin.%d\n", i);
-            return(1);
+            exit(1);
         }else
         {
             printf("Direcction file opened successfuly.\n");
