@@ -3,6 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+#include<stdlib.h>
+#include<stdio.h>
 #define NPINS 8
 #define LED_0 (17)
 #define LED_1 (4)
@@ -27,10 +29,10 @@ int setup(void)
     FILE* handle_export;
     int nWritten;
     int i =0;
-    char direcction [8][]={"/sys/class/gpio/gpio17/direcction","/sys/class/gpio/gpio4/direcction",
+    char direcction [][34]={"/sys/class/gpio/gpio17/direcction","/sys/class/gpio/gpio4/direcction",
     "/sys/class/gpio/gpio18/direcction","/sys/class/gpio/gpio23/direcction","/sys/class/gpio/gpio24/direcction"
     "/sys/class/gpio/gpio25/direcction","/sys/class/gpio/gpio22/direcction","/sys/class/gpio/gpio27/direcction"};
-    char pins [8][]={"17","4","18","23","24","25","22","27"};
+    char pins [][3]={"17","4","18","23","24","25","22","27"};
     for(i=0;i<NPINS;i++){
         if((handle_export = fopen(EXPORT_ADRESS ,"w")) == NULL )
         {
@@ -78,7 +80,7 @@ int setup(void)
 void leds (int puerto,int estado){//prende y apaga leds
     FILE * handle;
     int nWritten;
-    char direcction [8][]={"/sys/class/gpio/gpio17/value","/sys/class/gpio/gpio4/value",
+    char direcction [][29]={"/sys/class/gpio/gpio17/value","/sys/class/gpio/gpio4/value",
     "/sys/class/gpio/gpio18/value","/sys/class/gpio/gpio23/value","/sys/class/gpio/gpio24/value"
     "/sys/class/gpio/gpio25/value","/sys/class/gpio/gpio22/value","/sys/class/gpio/gpio27/value"};
     if ((handle = fopen(direcction[puerto],"w")) == NULL){
@@ -87,7 +89,7 @@ void leds (int puerto,int estado){//prende y apaga leds
     }else{
         printf("Device successfully opened\n");
     }
-    if(bit==1){//prendo
+    if(estado==1){//prendo
     if(fputc('1' ,handle)==-1){ // Set pin low
     printf("Clr_Pin: Cannot write to file. Try again later.\n");
     exit(1);
