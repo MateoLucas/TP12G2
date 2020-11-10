@@ -27,7 +27,7 @@ int main ()
         //salgo
     }else{
         printf("Ingrese una tecla \n");
-	int error=0,chr=0,bit=0;
+	int chr=0,bit=0;
 	do
 	{	
 		printf("PORT A:");
